@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-import scrapy
+from scrapy.loader import ItemLoader
+from harm_stories.items import HarmStoriesItem
+from scrapy import Spider
 
 
-class StoriesSpider(scrapy.Spider):
+class StoriesSpider(Spider):
     name = 'stories'
     start_urls = ['http://whatstheharm.net/index.html']
 
@@ -21,9 +23,10 @@ class StoriesSpider(scrapy.Spider):
         )
 
     def parse_story(self, response):
+        loader = ItemLoader(item=HarmStoriesItem(), response=response)
         harmed_people = response.xpath('//cite/text()').extract()[1].strip()
 
-        yield {
-            'topic': response.meta.get('topic'),
-            'harmed_people': harmed_people
-        }
+        loader.add_value('topic', response.meta.get('topic'))
+        loader.add_value('harmed_people', harmed_people)
+
+        return loader.load_item()
