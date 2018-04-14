@@ -4,8 +4,13 @@ import scrapy
 
 class StoriesSpider(scrapy.Spider):
     name = 'stories'
-    allowed_domains = ['http://whatstheharm.net/index.html']
-    start_urls = ['http://http://whatstheharm.net/index.html/']
+    start_urls = ['http://whatstheharm.net/index.html']
 
     def parse(self, response):
-        pass
+        table = response.xpath('//table')[1]
+        topics = table.xpath('.//a/text()').extract()
+
+        for topic in topics:
+            yield {
+                'topic': topic,
+            }
