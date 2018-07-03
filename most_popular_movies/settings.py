@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for harm_stories project
+# Scrapy settings for most_popular_movies project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'harm_stories'
+BOT_NAME = 'most_popular_movies'
 
-SPIDER_MODULES = ['harm_stories.spiders']
-NEWSPIDER_MODULE = 'harm_stories.spiders'
+SPIDER_MODULES = ['most_popular_movies.spiders']
+NEWSPIDER_MODULE = 'most_popular_movies.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'harm_stories (+http://www.yourdomain.com)'
+#USER_AGENT = 'most_popular_movies (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -47,13 +47,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'harm_stories.middlewares.HarmStoriesSpiderMiddleware': 543,
+#    'most_popular_movies.middlewares.MostPopularMoviesSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'harm_stories.middlewares.HarmStoriesDownloaderMiddleware': 543,
+#    'most_popular_movies.middlewares.MostPopularMoviesDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'harm_stories.pipelines.HarmStoriesPipeline': 300,
+#    'most_popular_movies.pipelines.MostPopularMoviesPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

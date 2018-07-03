@@ -6,5 +6,5 @@ setup(
     name         = 'project',
     version      = '1.0',
     packages     = find_packages(),
-    entry_points = {'scrapy': ['settings = harm_stories.settings']},
+    entry_points = {'scrapy': ['settings = most_popular_movies.settings']},
 )
