@@ -13,4 +13,5 @@ class MovieItem(Item):
     # name = scrapy.Field()
     title = Field()
     summary = Field()
+    director = Field()
 
