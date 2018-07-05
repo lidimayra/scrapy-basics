@@ -26,5 +26,5 @@ To crawl a spider, run command `scrapy crawl <spider_name>`.
 e.g.:
 ```
 # Running stories spider
-scrapy crawl stories
+scrapy crawl most_popular_movies
 ```

@@ -4,8 +4,8 @@ from most_popular_movies.items import MovieItem
 from scrapy import Spider
 
 
-class MoviesSpider(Spider):
-    name = 'movies'
+class MostPopularMoviesSpider(Spider):
+    name = 'most_popular_movies'
     start_urls = ['https://www.imdb.com/chart/moviemeter']
 
     def parse(self, response):
@@ -21,8 +21,8 @@ class MoviesSpider(Spider):
             yield response.follow(
                     href,
                     callback=self.parse_story,
-                    meta={ 'title': title }
-        )
+                    meta={'title': title}
+            )
 
     def parse_story(self, response):
         plot_summary = response.xpath("//div[contains(@class, 'plot_summary')]")
