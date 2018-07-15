@@ -20,21 +20,27 @@ class MostPopularMoviesSpider(Spider):
 
             yield response.follow(
                     href,
-                    callback=self.parse_story,
+                    callback=self.parse_movie,
                     meta={'title': title}
             )
 
-    def parse_story(self, response):
-        plot_summary = response.xpath("//div[contains(@class, 'plot_summary')]")
+    def parse_movie(self, response):
+        plot_summary = response.xpath(
+            "//div[contains(@class, 'plot_summary')]"
+        )
 
         summary = (
-            plot_summary.xpath("./div[contains(@class, 'summary_text')]/text()")
+            plot_summary.xpath(
+                "./div[contains(@class, 'summary_text')]/text()"
+            )
             .extract_first()
             .strip()
         )
 
         director = (
-            plot_summary.xpath("./div/span[contains(@itemprop, 'director')]/a/span/text()")
+            plot_summary.xpath(
+                "./div/span[contains(@itemprop, 'director')]/a/span/text()"
+            )
             .extract_first()
         )
 

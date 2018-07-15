@@ -1,3 +1,0 @@
-[scrapy]
-settings = most_popular_movies.settings
-
