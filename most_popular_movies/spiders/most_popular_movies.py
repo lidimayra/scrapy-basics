@@ -39,7 +39,7 @@ class MostPopularMoviesSpider(Spider):
 
         director = (
             plot_summary.xpath(
-                "./div/span[contains(@itemprop, 'director')]/a/span/text()"
+                "./div/div[contains(@class, 'credit_summary_item')]/a/text()"
             )
             .extract_first()
         )
