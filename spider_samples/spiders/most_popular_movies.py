@@ -5,18 +5,16 @@ from scrapy import Spider
 
 
 class MostPopularMoviesSpider(Spider):
-    name = 'spider_samples'
-    start_urls = ['https://www.imdb.com/chart/moviemeter']
+    name = 'most_popular_movies'
+    start_urls = ['https://www.rottentomatoes.com/browse/movies_in_theaters/sort:popular']
 
     def parse(self, response):
-        tbody = response.xpath("//tbody[contains(@class, 'lister-list')]")
-        data_columns = tbody.xpath("//td[contains(@class, 'titleColumn')]")
+        links = response.css('.discovery-tiles__wrap').xpath(".//a")
 
-        for column in data_columns:
-            link = column.xpath('./a')
-
-            title = link.xpath('./text()').extract_first()
-            href = link.xpath('./@href').extract_first()
+        for link in links:
+            title = link.xpath(".//span/text()").get().strip()
+            href = link.xpath('./@href').get()
+            print(href)
 
             yield response.follow(
                     href,
@@ -24,25 +22,14 @@ class MostPopularMoviesSpider(Spider):
                     meta={'title': title}
             )
 
+        tbody = response.xpath("//tbody[contains(@class, 'lister-list')]")
+        data_columns = tbody.xpath("//td[contains(@class, 'titleColumn')]")
+
     def parse_movie(self, response):
-        plot_summary = response.xpath(
-            "//div[contains(@class, 'plot_summary')]"
-        )
+        media_info = response.xpath("//section[contains(@class, media-info)]")
 
-        summary = (
-            plot_summary.xpath(
-                "./div[contains(@class, 'summary_text')]/text()"
-            )
-            .extract_first()
-            .strip()
-        )
-
-        director = (
-            plot_summary.xpath(
-                "./div/div[contains(@class, 'credit_summary_item')]/a/text()"
-            )
-            .extract_first()
-        )
+        summary = media_info.xpath(".//rt-text[contains(@data-qa, 'synopsis-value')]/text()").get()
+        director = media_info.xpath(".//rt-link[contains(@data-qa, 'item-value')]/text()").get()
 
         loader = ItemLoader(item=MovieItem(), response=response)
         loader.add_value('title', response.meta.get('title'))
