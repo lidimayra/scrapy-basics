@@ -15,3 +15,6 @@ class MovieItem(Item):
     summary = Field()
     director = Field()
 
+class NomineeItem(Item):
+    category = Field()
+    nominees = Field()
