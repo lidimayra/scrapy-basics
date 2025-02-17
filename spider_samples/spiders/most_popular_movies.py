@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from scrapy.loader import ItemLoader
-from most_popular_movies.items import MovieItem
+from spider_samples.items import MovieItem
 from scrapy import Spider
 
 
 class MostPopularMoviesSpider(Spider):
-    name = 'most_popular_movies'
+    name = 'spider_samples'
     start_urls = ['https://www.imdb.com/chart/moviemeter']
 
     def parse(self, response):
