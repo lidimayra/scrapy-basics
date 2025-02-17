@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from scrapy.loader import ItemLoader
-from most_popular_movies.items import NomineeItem
+from spider_samples.items import NomineeItem
 from scrapy import Spider
 
 
