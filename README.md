@@ -1,38 +1,26 @@
 # Scrapy Basics
 
-Projeto em Scrapy criado para demonstração. Contém funcionalidades básicas que
-são populares no framework _Scrapy_ e configurações que facilitam o deploy
-para o _Scrapinghub_.
+Scrapy project created for demonstration purposes. It contains basic functionalities popular on Scrapy framework and
+settings that enable it to be deployed to Scrapy Cloud.
 
-### Pré-requisitos
+### Prerequisites
+- [Python](https://www.python.org/) >= 3.13
+- [Scrapy](https://scrapy.org/) >= 2.12
 
-Para rodar este projeto é necessário ter instalado:
-- [Python](https://www.python.org/) >= 3.6
-- [Scrapy](https://scrapy.org/) >= 1.5
+### Installing
 
-Se você possui o [pip](https://pypi.org/project/pip/) instalado, é possível
-instalar o Scrapy através do gerenciador de pacotes:
-
-```
-pip install scrapy==1.5.0
-```
-
-### Instalação
-
-Clone o projeto e acesse o diretório recém-criado:
-
+Clone the project and access its directory:
 
 ```
 git clone git@github.com:lidimayra/scrapy-basics.git && cd scrapy-basics
 ```
 
-### Execução
+### Running
 
-Para realizar o crawl de uma spider execute o comando `scrapy crawl` passando o
-nome da spider como parâmetro.
+To crawl a spider, run the command `scrapy crawl <spider_name>`.
 
-ex.:
+e.g.:
 ```
-# Execução da spider most_popular_movies
+# Running most_popular_movies spider
 scrapy crawl most_popular_movies
 ```
